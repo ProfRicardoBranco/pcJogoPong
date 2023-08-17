@@ -177,7 +177,7 @@ function exibirTelaModoOponente() {
   fill("#0D0D0E");
   textAlign(CENTER);
   textSize(40);
-  text("Menu", width / 2, 100);
+  text("Menu de seleção", width / 2, 100);
 
   fill("#607D8B");
   //stroke("white");
