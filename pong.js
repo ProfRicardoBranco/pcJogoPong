@@ -43,7 +43,10 @@ function draw() {
     mouseSelecionaModoJogo();
     return; //o comando return interrompe o draw (não executa o que está para baixo)
   }
-
+/*
+As linhas abaixo só serão executadas quando a variável iniciaJogo for verdadeira.
+Em caso contrário a função return da linha 44 encerraria a execução da função draw
+*/
   background(0);
   incluiPlacar();
   mostraBolinha();
@@ -115,10 +118,15 @@ function mostraRaqueteOponente() {
 }
 
 function movimentaRaqueteOponente() {
-  if (modoPC) {
+  /*
+  Aqui teremos um condicional verificando se modoPC é verdadeiro ou falso
+  Se for verdadeiro, jogaremos contra o computador.
+  Se for falso jogaremos contra um outro jogador que movimentará sua raquete com as teclas seta para cima e seta para baixo
+  */
+  if (modoPC) {//joga contra o computador
     velocidadeYOponente = ybolinha - yRaqueteOponente - raqueteAltura / 2 - 50;
     yRaqueteOponente += velocidadeYOponente;
-  } else {
+  } else {//joga contra outro jogador
     if (keyIsDown(UP_ARROW)) {
       yRaqueteOponente -= 10;
     }
@@ -162,6 +170,7 @@ function marcaPontos() {
 }
 
 function exibirTelaModoOponente() {
+  //função que vai desenhar a tela de início
   background("#196EB3");
 
   noStroke();
@@ -182,25 +191,26 @@ function exibirTelaModoOponente() {
 }
 
 function mouseSelecionaModoJogo() {
+  //função que vai monitorar a posição do mouse e se foi clicado em um dos botões de seleção de modo
   let xPosEsquerda = xPosDireita + comprimentoBotao;
 
-  if (mouseX > xPosDireita && mouseX < xPosEsquerda) {
-    if (mouseY > 150 && mouseY < 200) {
+  if (mouseX > xPosDireita && mouseX < xPosEsquerda) {//Aqui verifico apenas a posição x do mouse
+    if (mouseY > 150 && mouseY < 200) {//agora verifico a posição y se está no primeiro botão
       yPosRetanguloSelecao = 150;
       noFill();
       stroke(220, 220, 220);
-      rect(140, yPosRetanguloSelecao, 320, 50, 10);
-      if (mouseIsPressed) {
+      rect(140, yPosRetanguloSelecao, 320, 50, 10); //desenho o retângulo sem bordas para mostrar o foco
+      if (mouseIsPressed) {//se está com o mouse sobre o primeiro botão e clicar com o mouse
         modoPC = false;
         iniciaJogo = true;
       }
     }
-    if (mouseY > 210 && mouseY < 300) {
+    if (mouseY > 210 && mouseY < 300) {//agora verifico a posição y do mouse se está no seegundo botão
       yPosRetanguloSelecao = 210;
       noFill();
       stroke(220, 220, 220);
-      rect(140, yPosRetanguloSelecao, 320, 50, 10);
-      if (mouseIsPressed) {
+      rect(140, yPosRetanguloSelecao, 320, 50, 10);//desenho o retângulo sem bordas para mostrar o foco
+      if (mouseIsPressed) {//se está com o mouse sobre o segundo botão e clicar com o mouse
         modoPC = true;
         iniciaJogo = true;
       }
