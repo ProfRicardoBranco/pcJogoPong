@@ -205,7 +205,7 @@ function mouseSelecionaModoJogo() {
         iniciaJogo = true;
       }
     }
-    if (mouseY > 210 && mouseY < 300) {//agora verifico a posição y do mouse se está no seegundo botão
+    if (mouseY > 210 && mouseY < 260) {//agora verifico a posição y do mouse se está no seegundo botão
       yPosRetanguloSelecao = 210;
       noFill();
       stroke(220, 220, 220);
